@@ -5,3 +5,8 @@
  */
 
 // You can delete this file if you're not using it
+
+exports.onCreateNode = ({ node }) => {
+    console.log('my log:')
+    console.log(node.internal.type)
+  }
