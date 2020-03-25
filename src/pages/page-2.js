@@ -13,25 +13,40 @@ const SecondPage = ({data}) => (
 
     <div>
     {
-    data.allDatoCmsVideoPost.edges.map((block, index) => (
-      <div key={index}>
-        <p> post-title: {block.node.postTitle}</p>
-        <p> description: {block.node.singleVideoDescription}</p>
-        <p> slug: {block.node.slugName}</p>
-        <p> spotlight: {block.node.toSpotlight}</p>
-        <p> video-url: <iframe title={index} width="560" height="315" src={block.node.singleVideoVideo} frameBorder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowFullScreen></iframe>   </p>
 
-
-
-
-        <br></br>
-      </div>
-
-    ))
-
+    data.allDatoCmsVideoModel.nodes.sort(
+                                          (a, b) => {
+                                          const positionA = a.position;
+                                          const positionB = b.position;
+                                          let comparision = 0;
+                                            if(positionA > positionB) {
+                                              comparision = 1;
+                                            } else if (positionA < positionB) {
+                                              comparision = -1
+                                            }
+                                            return comparision
+                                          }
+                                          ).map((block, index) => ( 
+            <div key={index}>
+            <p>record position: {block.position}</p>
+            
+                {block.newVideo.map((innerBlock, index) => (
+                  <div key={index}>
+                  <p> post-title: {innerBlock.postTitle}</p>
+                  <p> description: {innerBlock.singleVideoDescription}</p>
+                  <p> slug: {innerBlock.slugName}</p>
+                  <p> spotlight: {innerBlock.toSpotlight}</p>
+                  <p> video-url: <iframe title={index} width="560" height="315" src={innerBlock.singleVideoVideo}
+                                  frameBorder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowFullScreen>
+                                 </iframe></p>
+                  <br></br>
+                  </div>
+                  ))}
+              </div>  
+            ))
     }
-  </div>
 
+  </div>
   </Layout>
 )
 
@@ -39,18 +54,19 @@ export default SecondPage
 
 export const videoPostQuery = graphql`
 query MyQuery {
-  allDatoCmsVideoPost {
-    edges {
-      node {
-        id
+  allDatoCmsVideoModel {
+    nodes {
+      id
+      position
+      newVideo {
         postTitle
         singleVideoDescription
+        singleVideoVideo
+        singleVideoImage {
+          path
+        }
         slugName
         toSpotlight
-        model {
-          apiKey
-        }
-        singleVideoVideo
       }
     }
   }
