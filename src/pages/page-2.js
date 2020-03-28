@@ -11,6 +11,14 @@ const SecondPage = ({data}) => (
     <h1>Videos</h1>
     <Link to="/">Go back to the homepage</Link>
 
+  {/* <div>
+    {data.allDatoCmsVideoModel.nodes.newVideo
+    .map(({ node }) => {
+      return <Link key={node.id} to={`/${node.slug}`}>{node.title}</Link>
+    })
+    }
+  </div> */}
+
     <div>
     {
 
@@ -28,7 +36,7 @@ const SecondPage = ({data}) => (
                                           }
                                           ).map((block, index) => ( 
             <div key={index}>
-            <p>record position: {block.position}</p>
+              <p>record position: {block.position}</p>
             
                 {block.newVideo.map((innerBlock, index) => (
                   <div key={index}>
@@ -42,7 +50,7 @@ const SecondPage = ({data}) => (
                   <br></br>
                   </div>
                   ))}
-              </div>  
+            </div>  
             ))
     }
 
