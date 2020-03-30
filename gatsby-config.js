@@ -48,5 +48,6 @@ module.exports = {
           noIframeBorder: true
       },
   },
+  `gatsby-plugin-sass`,
   ],
 }

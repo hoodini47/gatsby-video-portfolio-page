@@ -26,7 +26,7 @@ exports.createPages = async function({ graphql, actions }) {
     result.data.allDatoCmsVideoPost.edges.forEach(edge => {
       createPage({
         // Path for this page — required
-        path: `${edge.node.slugName}`,
+        path: `/videos/${edge.node.slugName}`,
         component: blogPostTemplate,
         context: {
           // Add optional context data to be inserted

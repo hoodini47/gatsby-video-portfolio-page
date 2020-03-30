@@ -1,0 +1,137 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    background-color: #c0fcfa;
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100%;
+}
+
+header {
+    background-color: #e1c9e4;
+    display:flex;
+    flex-flow: row no-repeat;
+    transition: 1s ease-in;
+
+    @media (min-width: 320px ) {
+    }
+    height: 10vh;
+    width: 100%;
+    top: 0;
+    position: sticky;
+
+    @media (min-width: 1200px) {
+        height: 100vh;
+        width: 7%;
+
+        #header-items {
+            border: 5px solid rgb(0, 0, 0);
+            width: 100%;
+            height:100vh;
+            position: relative;
+            display: flex;
+            flex-flow: column nowrap;
+            align-content: space-around;
+
+            h1 {
+                transform: rotate(270deg);
+                order: 1;
+                margin-right: 2em;
+                width: 100%;
+                margin: auto 0;
+                    
+                    a {
+                        font-size: 30px;
+                    }
+            }
+
+            ul#menu {
+                position: relative;
+                transform: rotate(180deg);
+                transform-origin: right, top;
+                padding: 1em;
+                display: flex;
+                flex-flow: column nowrap;
+                height: 70%;
+                text-align: center;
+                justify-content: center;
+                align-items: center;
+                list-style: none;
+                margin-left: 0em;
+        
+        
+                li {
+                    padding: 0px 40px 0px 40px;
+                    min-width: 15vw;
+                    transform: rotate(-270deg);
+                    margin: auto 0;
+                };
+            }
+        }
+
+    }
+
+}
+
+.flex-wrapper {
+    display: flex;
+    flex-flow: column;
+
+    @media (min-width: 1200px) {
+    flex-flow:row;
+    }
+}
+
+#subMenu {
+    height: 170px;
+    width: 30%;
+    background-color: mintcream;
+    border: 5px solid rgb(124, 126, 148);
+    color: black;
+    font-size: 30px;
+    position: sticky;
+    top: 0;
+    transform: translateX(0%);
+    z-index:-1;
+    transform: rotate(180deg);
+    display: flex;
+    text-align: center;
+    justify-content: center;
+    padding: 1em;
+
+
+    p {
+        transform: rotate(90deg);
+        font-size: 22px;
+        margin: auto;
+        padding: 1em 1em 1em 1em;
+        width: 500px;
+    }
+
+    @media (min-width: 1200px) {
+        width: 40%;
+        height: 100vh;
+    }
+}
+
+footer {
+    height: 300px;
+    border: 3px solid purple;
+}
+
+main {
+    display: flex;
+    justify-content: center;
+    margin-top: 10vw;
+    @media (min-width: 1200px) {
+            width: 100%;
+    }
+
+    .video-record {
+        border: 1px solid black;
+    }
+
+}

@@ -1,42 +1,64 @@
 import { Link } from "gatsby"
 import PropTypes from "prop-types"
 import React from "react"
+import { graphql, useStaticQuery } from "gatsby"
 
-const Header = ({ siteTitle }) => (
-  <header
-    style={{
-      background: `rebeccapurple`,
-      marginBottom: `1.45rem`,
-    }}
-  >
-    <div
-      style={{
-        margin: `0 auto`,
-        maxWidth: 960,
-        padding: `1.45rem 1.0875rem`,
-      }}
-    >
-      <h1 style={{ margin: 0 }}>
-        <Link
+import ListOfMenuItems from "./list-of-menu-items"
+
+export const Header = () => {
+
+  const data = useStaticQuery(graphql`
+  query MyHeaderQuery {
+    datoCmsHeaderAddOn {
+      addOn
+    }
+    datoCmsSiteTitle {
+      title
+    }
+  }
+  `)
+
+
+
+  return (
+  <>
+  <header>
+    <div id="header-items">
+
+        <h1>
+        <Link siteTitle={data.datoCmsSiteTitle.title}
           to="/"
           style={{
             color: `white`,
             textDecoration: `none`,
-          }}
-        >
-          {siteTitle}
+          }}>
+
+         {data.datoCmsSiteTitle.title}
+
         </Link>
-      </h1>
+        </h1>
+
+        <ListOfMenuItems />
+
     </div>
+
+    <div headerAddon={data.datoCmsHeaderAddOn.addOn}
+          id="subMenu">
+      <p>{data.datoCmsHeaderAddOn.addOn}</p>
+    </div>
+
   </header>
-)
 
-Header.propTypes = {
-  siteTitle: PropTypes.string,
+  </>
+  )
 }
 
-Header.defaultProps = {
-  siteTitle: ``,
-}
+// Header.propTypes = {
+//   title: PropTypes.string,
+// }
+
+// Header.defaultProps = {
+//   title: ``,
+// }
 
 export default Header
